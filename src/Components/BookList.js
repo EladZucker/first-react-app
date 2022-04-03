@@ -2,15 +2,19 @@ import "./BookList.css"
 import Book from "./Book"
 
 const BookList = (props) => {
-  const { title }  = props
-    return (
-      <div className="booksContainer">
-        <h1>{title}</h1>
-        <Book name="Book 1" publishDate="10/10/2020" />
-        <Book name="Book 2 is the best" publishDate="1/1/2020"/>
-        <Book name="Book 3" publishDate="10/10/2021"/>
-      </div>
-    );
+
+  console.log("BookList Component called !");
+  const { title }  = props;
+  const books = props.books;
+
+  return (
+    <div className="booksContainer">
+      <h1>{title}</h1>
+      {books.map((book, idx) => 
+          <Book key={idx} name={book.name} publishDate={book.publishDate} />
+      )}
+    </div>
+  );
 }
 
 export default BookList;
